@@ -28,6 +28,8 @@ export const NoteForm: React.FC<Props> = ({className}) => {
       type: 'ADD_NOTE',
       payload: {title: titleValue, content: contentValue}
     });
+    setTitleValue('');
+    setContentValue('');
   }
 
   return (

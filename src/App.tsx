@@ -5,10 +5,14 @@ import {
   reducer,
   StateContext
 } from "@/state/notes-reducer.ts";
-import {useReducer} from "react";
+import {useEffect, useReducer} from "react";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    console.log(state.notes);
+  }, [state.notes])
 
   return (
     <StateContext.Provider value={state}>
