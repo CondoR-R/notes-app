@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import cn from 'classnames';
 import style from './NoteForm.module.scss';
 import {DispatchContext} from "@/state/notes-reducer.ts";
@@ -10,6 +10,9 @@ interface Props {
 export const NoteForm: React.FC<Props> = ({className}) => {
   const [titleValue, setTitleValue] = useState<string>('');
   const [contentValue, setContentValue] = useState<string>('');
+
+  const titleRef = useRef<HTMLInputElement>(null);
+
   const dispatch = useContext(DispatchContext);
 
   const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,6 +35,10 @@ export const NoteForm: React.FC<Props> = ({className}) => {
     setContentValue('');
   }
 
+  useEffect(() => {
+    titleRef.current?.focus();
+  }, [])
+
   return (
     <form
       className={cn(style.wrapper, className)}
@@ -41,6 +48,7 @@ export const NoteForm: React.FC<Props> = ({className}) => {
       <label htmlFor="new-note-title">
         <span>Заголовок:</span>
         <input
+          ref={titleRef}
           id="new-note-title"
           value={titleValue}
           onChange={onChangeTitle}
