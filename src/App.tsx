@@ -11,14 +11,14 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    localStorage.setItem('notes', JSON.stringify(state.notes));
-  }, [state.notes]);
-
-  useEffect(() => {
     const savedNotes = localStorage.getItem('notes');
     if (!savedNotes) return;
     dispatch({type: 'LOAD_NOTES', payload: JSON.parse(savedNotes)})
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(state.notes));
+  }, [state.notes]);
 
   return (
     <StateContext.Provider value={state}>

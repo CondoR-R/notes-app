@@ -3,6 +3,7 @@ import {createContext, type Dispatch} from "react";
 
 export const initialState: StateT = {
   notes: [],
+  searchQuery: '',
 }
 
 export const reducer = (state: StateT, action: ActionT) => {
@@ -28,7 +29,13 @@ export const reducer = (state: StateT, action: ActionT) => {
     case 'LOAD_NOTES': {
       return {
         ...state,
-        notes: [...state.notes, ...action.payload],
+        notes: action.payload,
+      }
+    }
+    case 'CHANGE_SEARCH_QUERY': {
+      return {
+        ...state,
+        searchQuery: action.payload,
       }
     }
     default: {
