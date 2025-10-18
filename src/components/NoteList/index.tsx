@@ -9,7 +9,7 @@ interface Props {
 export const NoteList: React.FC<Props> = ({className}) => {
   return (
     <div className={cn(style.wrapper, className)}>
-      NoteList
+      <h2>Мои заметки</h2>
     </div>
   )
 }

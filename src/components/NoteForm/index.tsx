@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import cn from 'classnames';
 import style from './NoteForm.module.scss';
+import {DispatchContext} from "@/state/notes-reducer.ts";
 
 interface Props {
   className?: string;
@@ -9,6 +10,7 @@ interface Props {
 export const NoteForm: React.FC<Props> = ({className}) => {
   const [titleValue, setTitleValue] = useState<string>('');
   const [contentValue, setContentValue] = useState<string>('');
+  const dispatch = useContext(DispatchContext);
 
   const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitleValue(e.target.value);
@@ -20,6 +22,12 @@ export const NoteForm: React.FC<Props> = ({className}) => {
 
   const onCreateNote = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!dispatch) return;
+    dispatch({
+      type: 'ADD_NOTE',
+      payload: {title: titleValue, content: contentValue}
+    });
   }
 
   return (
