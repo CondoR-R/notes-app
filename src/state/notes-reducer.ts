@@ -1,4 +1,5 @@
 import type {ActionT, NoteT, StateT} from "@/types";
+import {createContext, type Dispatch} from "react";
 
 export const initialState: StateT = {
   notes: [],
@@ -29,3 +30,7 @@ export const reducer = (state: StateT, action: ActionT) => {
     }
   }
 }
+
+export const StateContext = createContext<StateT>(initialState);
+export const DispatchContext =
+  createContext<Dispatch<ActionT> | null>(null);

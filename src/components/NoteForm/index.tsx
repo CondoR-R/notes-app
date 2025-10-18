@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import cn from 'classnames';
 import style from './NoteForm.module.scss';
 
@@ -7,10 +7,49 @@ interface Props {
 }
 
 export const NoteForm: React.FC<Props> = ({className}) => {
+  const [titleValue, setTitleValue] = useState<string>('');
+  const [contentValue, setContentValue] = useState<string>('');
+
+  const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitleValue(e.target.value);
+  }
+
+  const onChangeContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setContentValue(e.target.value);
+  }
+
+  const onCreateNote = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  }
+
   return (
-    <form className={cn(style.wrapper, className)}>
-      <label htmlFor="">Заголовок</label>
-      
+    <form
+      className={cn(style.wrapper, className)}
+      onSubmit={onCreateNote}
+    >
+      <h2>Новая заметка</h2>
+      <label htmlFor="new-note-title">
+        <span>Заголовок:</span>
+        <input
+          id="new-note-title"
+          value={titleValue}
+          onChange={onChangeTitle}
+        />
+      </label>
+      <label htmlFor="new-note-content">
+        <span>Заметка:</span>
+        <textarea
+          id="new-note-content"
+          cols={30}
+          rows={10}
+          value={contentValue}
+          onChange={onChangeContent}
+        />
+      </label>
+      <input
+        type={'submit'}
+        value={'Создать'}
+      />
     </form>
   )
 }
