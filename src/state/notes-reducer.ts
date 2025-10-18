@@ -11,18 +11,24 @@ export const reducer = (state: StateT, action: ActionT) => {
       const newNote: NoteT = {
         title: action.payload.title,
         content: action.payload.content,
-        date: new Date(),
+        date: (new Date()).toString(),
         id: Date.now(),
       }
       return {
         ...state,
-        notes: [...state.notes, newNote],
+        notes: [newNote, ...state.notes],
       }
     }
     case 'REMOVE_NOTE': {
       return {
         ...state,
         notes: [...state.notes.filter(({id}) => id !== action.payload)]
+      }
+    }
+    case 'LOAD_NOTES': {
+      return {
+        ...state,
+        notes: [...state.notes, ...action.payload],
       }
     }
     default: {

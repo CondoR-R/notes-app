@@ -7,5 +7,5 @@ export type NewNoteT = {
 
 export type NoteT = {
   id: IdT;
-  date: Date;
+  date: string;
 } & NewNoteT;
