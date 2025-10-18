@@ -22,8 +22,8 @@ export const NoteForm: React.FC<Props> = ({className}) => {
 
   const onCreateNote = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (!dispatch) return;
+
     dispatch({
       type: 'ADD_NOTE',
       payload: {title: titleValue, content: contentValue}
