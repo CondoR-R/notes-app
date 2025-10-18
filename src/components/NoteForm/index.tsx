@@ -8,8 +8,9 @@ interface Props {
 
 export const NoteForm: React.FC<Props> = ({className}) => {
   return (
-    <div className={cn(style.wrapper, className)}>
-      NoteForm
-    </div>
+    <form className={cn(style.wrapper, className)}>
+      <label htmlFor="">Заголовок</label>
+      
+    </form>
   )
 }
