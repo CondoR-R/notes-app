@@ -28,6 +28,8 @@ export const NoteList: React.FC<Props> = ({className}) => {
       />
     ))
 
+  console.log(renderNotes);
+
   return (
     <div className={cn(style.wrapper, className, 'border')}>
       <h2 className={style.title}>Мои заметки</h2>
@@ -35,9 +37,11 @@ export const NoteList: React.FC<Props> = ({className}) => {
         <SearchBar className={style.search} />
         <SortControls />
       </div>
-      <ul className={style.list}>
+      {renderNotes.length > 0 ? (<ul className={style.list}>
         {renderNotes}
-      </ul>
+      </ul>) : (<p className={style.empty}>Пусто...</p>)}
+
+
     </div>
   )
 }
