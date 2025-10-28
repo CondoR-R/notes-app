@@ -1,6 +1,5 @@
 import type {IdT, NewNoteT, NoteT} from "@/types/Note.type.ts";
 import type {SearchQueryT} from "@/types";
-import type {SortOrderT} from "@/types/State.type.ts";
 
 type AddNoteActionT = { type: 'ADD_NOTE', payload: NewNoteT };
 type RemoveNoteActionT = { type: 'REMOVE_NOTE', payload: IdT };
@@ -10,8 +9,7 @@ type ChangeSearchQueryActionT = {
   payload: SearchQueryT
 };
 type ChangeSortOrderActionT = {
-  type: 'CHANGE_SORT_ORDER',
-  payload: SortOrderT
+  type: 'CHANGE_SORT_ORDER'
 }
 
 export type ActionT =

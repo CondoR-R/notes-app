@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const NoteList: React.FC<Props> = ({className}) => {
-  const {notes, searchQuery} = useContext(StateContext);
+  const {notes, searchQuery, sortOrder} = useContext(StateContext);
 
   const renderNotes = notes
     .filter(({
@@ -19,7 +19,9 @@ export const NoteList: React.FC<Props> = ({className}) => {
       title.toLowerCase().includes(searchQuery.toLowerCase())
       || content.toLowerCase().includes(searchQuery.toLowerCase())))
     .sort((a, b) => {
-      return (+new Date(b.date) - +new Date(a.date));
+      return sortOrder === 'asc'
+        ? (+new Date(b.date) - +new Date(a.date))
+        : (+new Date(a.date) - +new Date(b.date));
     })
     .map((note) => (
       <NoteItem
@@ -27,8 +29,6 @@ export const NoteList: React.FC<Props> = ({className}) => {
         note={note}
       />
     ))
-
-  console.log(renderNotes);
 
   return (
     <div className={cn(style.wrapper, className, 'border')}>
