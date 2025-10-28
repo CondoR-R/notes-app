@@ -52,6 +52,7 @@ export const NoteForm: React.FC<Props> = ({className}) => {
           value={titleValue}
           onChange={onChangeTitle}
           placeholder={'Заголовок'}
+          className={'input'}
         />
       </label>
       <label htmlFor="new-note-content">
@@ -62,11 +63,13 @@ export const NoteForm: React.FC<Props> = ({className}) => {
           value={contentValue}
           onChange={onChangeContent}
           placeholder={'Заметка'}
+          className={'input'}
         />
       </label>
       <input
         type={'submit'}
         value={'Создать'}
+        className={'input button'}
       />
     </form>
   )

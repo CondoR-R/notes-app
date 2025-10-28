@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import type {NoteT} from "@/types";
 import cn from "classnames";
 import {DispatchContext} from "@/state/notes-reducer.ts";
+import style from "./NoteItem.module.scss";
 
 interface Props {
   className?: string;
@@ -18,16 +19,22 @@ export const NoteItem: React.FC<Props> = ({className, note}) => {
   }
 
   return (
-    <li className={cn(className)}>
-      <h3>{note.title}</h3>
-      <p>{note.content}</p>
-      <span>{new Date(note.date).toLocaleString()}</span>
-      <button
-        type="button"
-        onClick={onClickDeleteNote}
-      >
-        Удалить
-      </button>
+    <li className={cn(style.item, className)}>
+      <div className={style.header}>
+        <h3>{note.title}</h3>
+        <button
+          type="button"
+          onClick={onClickDeleteNote}
+          className={style.delete}
+        >
+          Удалить
+        </button>
+      </div>
+      <div className={style.body}>
+        <p>{note.content}</p>
+        <span className={style.date}>{new Date(note.date).toLocaleString()}</span>
+      </div>
+
     </li>
   )
 }

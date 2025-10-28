@@ -8,8 +8,8 @@ interface Props {
 
 export const SortControls: React.FC<Props> = ({className}) => {
   return (
-    <button className={cn(style.wrapper, className)}>
-      новые сверху
+    <button className={cn(style.sort, className, 'input', 'button')}>
+      Новые сверху
     </button>
   )
 }

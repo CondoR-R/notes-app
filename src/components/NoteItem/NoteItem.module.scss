@@ -1,3 +1,47 @@
-.wrapper {
+.item {
+  background-color: #eee;
+  border-radius: 15px;
+  padding: 10px;
+}
 
+.header, .body {
+  padding: 10px;
+}
+
+.header {
+  background-color: #fafafa;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 10px;
+}
+
+.delete {
+  align-self: center;
+  border: 1px solid #FF3636;
+  background-color: transparent;
+  padding: 5px 10px;
+  color: #FF3636;
+  border-radius: 5px;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: #FF3636;
+    color: #fafafa;
+  }
+
+  &:active {
+    background-color: #e02f2f;
+  }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.date {
+  color: #777;
+  font-size: 14px;
 }

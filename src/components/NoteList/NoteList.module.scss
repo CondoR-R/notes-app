@@ -1,3 +1,24 @@
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
 
+.title {
+  align-self: center;
+}
+
+.filtersBox {
+  display: flex;
+  column-gap: 10px;
+}
+
+.search {
+  flex: 1;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }

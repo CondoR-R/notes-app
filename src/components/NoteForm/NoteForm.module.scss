@@ -4,32 +4,12 @@
   flex-direction: column;
   row-gap: 20px;
 
-
   input, textarea {
-    padding: 5px 10px;
-    border-radius: 10px;
-    border: 1px solid #bbb;
     width: 100%;
   }
 
   textarea {
     resize: none;
-  }
-
-
-  input[type=submit] {
-    background-color: #eee;
-    transition: background-color .2s;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #ccc;
-    }
-
-    &:active {
-      background-color: #aaa;
-    }
-
   }
 }
 

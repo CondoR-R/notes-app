@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import {DispatchContext, StateContext} from "@/state/notes-reducer.ts";
 import cn from "classnames";
+import style from './SearchBar.module.scss'
 
 interface Props {
   className?: string;
@@ -18,7 +19,7 @@ export const SearchBar: React.FC<Props> = ({className}) => {
 
   return (
     <input
-      className={cn(className)}
+      className={cn(className, style.search, 'input')}
       placeholder={'Поиск...'}
       value={searchQuery}
       onChange={onChangeSearch}

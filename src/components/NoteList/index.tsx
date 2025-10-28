@@ -30,10 +30,12 @@ export const NoteList: React.FC<Props> = ({className}) => {
 
   return (
     <div className={cn(style.wrapper, className, 'border')}>
-      <h2>Мои заметки</h2>
-      <SearchBar />
-      <SortControls />
-      <ul>
+      <h2 className={style.title}>Мои заметки</h2>
+      <div className={style.filtersBox}>
+        <SearchBar className={style.search} />
+        <SortControls />
+      </div>
+      <ul className={style.list}>
         {renderNotes}
       </ul>
     </div>
