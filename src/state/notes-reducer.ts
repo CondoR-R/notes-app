@@ -4,9 +4,10 @@ import {createContext, type Dispatch} from "react";
 export const initialState: StateT = {
   notes: [],
   searchQuery: '',
+  sortOrder: 'asc',
 }
 
-export const reducer = (state: StateT, action: ActionT) => {
+export const reducer = (state: StateT, action: ActionT): StateT => {
   switch (action.type) {
     case 'ADD_NOTE': {
       const newNote: NoteT = {
@@ -36,6 +37,12 @@ export const reducer = (state: StateT, action: ActionT) => {
       return {
         ...state,
         searchQuery: action.payload,
+      }
+    }
+    case 'CHANGE_SORT_ORDER': {
+      return {
+        ...state,
+        sortOrder: state.sortOrder === 'desc' ? 'asc' : 'desc',
       }
     }
     default: {

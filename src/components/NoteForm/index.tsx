@@ -25,7 +25,7 @@ export const NoteForm: React.FC<Props> = ({className}) => {
 
   const onCreateNote = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!dispatch) return;
+    if (!dispatch || titleValue === '' && contentValue === '') return;
 
     dispatch({
       type: 'ADD_NOTE',
@@ -41,27 +41,27 @@ export const NoteForm: React.FC<Props> = ({className}) => {
 
   return (
     <form
-      className={cn(style.wrapper, className)}
+      className={cn(style.wrapper, className, 'border')}
       onSubmit={onCreateNote}
     >
-      <h2>Новая заметка</h2>
+      <h2 className={style.title}>Новая заметка</h2>
       <label htmlFor="new-note-title">
-        <span>Заголовок:</span>
         <input
           ref={titleRef}
           id="new-note-title"
           value={titleValue}
           onChange={onChangeTitle}
+          placeholder={'Заголовок'}
         />
       </label>
       <label htmlFor="new-note-content">
-        <span>Заметка:</span>
         <textarea
           id="new-note-content"
           cols={30}
           rows={10}
           value={contentValue}
           onChange={onChangeContent}
+          placeholder={'Заметка'}
         />
       </label>
       <input

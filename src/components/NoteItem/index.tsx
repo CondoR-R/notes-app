@@ -21,7 +21,7 @@ export const NoteItem: React.FC<Props> = ({className, note}) => {
     <li className={cn(className)}>
       <h3>{note.title}</h3>
       <p>{note.content}</p>
-      <span>{note.date}</span>
+      <span>{new Date(note.date).toLocaleString()}</span>
       <button
         type="button"
         onClick={onClickDeleteNote}
