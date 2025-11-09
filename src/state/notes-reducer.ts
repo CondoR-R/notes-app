@@ -45,6 +45,12 @@ export const reducer = (state: StateT, action: ActionT): StateT => {
         sortOrder: state.sortOrder === 'desc' ? 'asc' : 'desc',
       }
     }
+    case 'CHANGE_NOTE': {
+      return {
+        ...state,
+        notes: [action.payload, ...state.notes.filter(({id}) => id !== action.payload.id)]
+      }
+    }
     default: {
       throw new Error('Неизвестный type')
     }

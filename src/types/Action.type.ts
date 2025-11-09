@@ -10,11 +10,13 @@ type ChangeSearchQueryActionT = {
 };
 type ChangeSortOrderActionT = {
   type: 'CHANGE_SORT_ORDER'
-}
+};
+type ChangeNoteT = { type: 'CHANGE_NOTE', payload: NoteT };
 
 export type ActionT =
   AddNoteActionT
   | RemoveNoteActionT
   | LoadNotesActionT
   | ChangeSearchQueryActionT
-  | ChangeSortOrderActionT;
+  | ChangeSortOrderActionT
+  | ChangeNoteT;
